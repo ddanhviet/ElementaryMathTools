@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arithmetic Tables</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="arithmetictable.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="arithmetictable.js"></script>
+	</head>
+	<body>
+		<a href="main.html">
+		<img class="buttons" src="Arrowback.png">
+		</a>
+		<h1>ARITHMETIC TABLES</h1>
+		<p align="center" style="font-size:20px">
+			Choose base:
+			<select id="inputb" class="fontsize">
+				<option value="2">2</option>	
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10" selected="selected">10</option>
+			</select>
+			<input id="resetbase" class="button" value="Refresh" type="button">
+		</p>
+		<h2>ADDITION TABLE</h2>
+		<div id="addsection">
+			<table id="addtable" class="floattable">
+					
+			</table>
+			<table id="addresult" class="floattable">
+				
+			</table>
+		</div>
+		<div class="clearfloat"></div>
+		<div id="answer">
+			<input id="addcheck" class="button" value="Check Answer" type="button">
+			<input id="addans" class="button" value="Show Answer" type="button">
+		</div>
+		
+		<h2>MULTIPLICATION TABLE</h2>
+		<div class="multisection">
+			<table id="multitable" class="floattable">
+					
+			</table>
+					
+			<table id="multiresult" class="floattable">	
+			</table>
+		</div>
+		<div class="clearfloat"></div>
+		<div id="answer">
+			<input id="multicheck" class="button" value="Check Answer" type="button">
+			<input id="multians" class="button" value="Show Answer" type="button">
+		</div>
+	</body>
+</html>

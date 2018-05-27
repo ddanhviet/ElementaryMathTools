@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number Line</title>
+	<meta http-equiv="content-type" content="text/html; charset="UTF-8">
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="numberline.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="numberline.js"></script>
+</head>	
+<body>
+	<a href="main.html">
+		<img class="buttons" src="Arrowback.png">
+		</a>
+	<h1>Number Line</h1>
+	<div id="info" class="center">
+		<p>
+		Choose base:
+			<select id="inputb" class="fontsize">
+				<option value="2">2</option>	
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10" selected="selected">10</option>
+		</select>
+		</p>
+		Power X:  <input id="powerx" type="text">
+		<p>
+			Number:
+			<input id="numberGo" type="text">
+		</p>
+		<input id="submit" value="Submit" type="button">
+	</div>
+	<div id="DrawingCanvas" class="drawing">
+	<canvas id="numberlineCanvas" class="numbercanvas" width="1050px" height="400px" style="border:1px solid #d3d3d3; z-index: 1;"></canvas>
+	<canvas id="layer2" class="numbercanvas" width="1050px" height="400px" style="border:1px solid #d3d3d3; z-index: 0;"></canvas>		
+	</div>
+</body>	
+</html>

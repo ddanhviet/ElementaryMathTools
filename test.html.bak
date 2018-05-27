@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="arithmetictable.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>	
+<body>
+	<table class="editableTable">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>Shahid</td>
+                <td>shahid@ssiddique.info</td>
+                <td>012-234-2432</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table id="sizeable">
+    </table>
+</body>
+<html/>

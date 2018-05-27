@@ -1,0 +1,74 @@
+$(document).ready(function () {
+    
+    var base=10;
+    
+    var string="<tr>";
+    string += "<th> + </th>";
+    for (var c=0;c<base;c++) {
+    	string+= "<th>" + c + "</th>";
+    }
+    string+= "</tr>";
+    $("#sizeable").append(string);
+    
+    string="";
+    for (var c=0;c<base;c++) {
+    	string+= "<tr>";
+    	for (var r=0;r<=base;r++) {
+    		if (r==0) {
+    			string+="<th>" + c + "</th>";
+    		}
+    		else {
+    			cell = r + c;
+    			string+="<td>" + cell + "</td>";
+    		}	
+    	}
+    	string+="</tr>";
+    }
+    $("#sizeable").append(string);
+    
+    
+    
+    $("td").click(function () {
+        var OriginalContent = $(this).text();
+        $(this).addClass("cellEditing");
+        $(this).html("<input type='text' value='" + OriginalContent + "' />");
+        $(this).children().first().focus();
+        $(this).children().first().keypress(function (e) {
+            if (e.which == 13) {
+                var newContent = $(this).val();
+                $(this).parent().text(newContent);
+                $(this).parent().removeClass("cellEditing");
+            }
+        });
+    $(this).children().first().blur(function(){
+        $(this).parent().text(OriginalContent);
+        $(this).parent().removeClass("cellEditing");
+    });
+        $(this).find('input').click(function(e){
+            e.stopPropagation(); 
+        });
+    });
+});
+
+
+/*$(function() {
+	$("td").click(function() {
+			var OrginalContent = $(this).text();
+			
+			$(this).addClass("cellEditing");
+			$(this).html("<input type="text" value="&quot; + OriginalContent + &quot;" />");
+			$(this).children().first().focus();
+			$(this).children().first().keypress(function (e) {
+				if (e.which == 13) {
+					var newContent = $(this).val();
+					$(this).parent().text(newContent);
+					$(this).parent().removeClass("cellEditing");
+				}
+			});
+			
+			$(this).children().first().blur(function() {
+				$(this).parent().text(OriginalContent);
+				$(this).parent().removeClass("cellEditing");
+			});
+		});
+});*/

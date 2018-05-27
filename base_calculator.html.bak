@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 		<style type="text/css">
+			body, input, select {font-size:24px;font-weight:bold;}
+			.r {color:red;}
+   		.inputnum {text-align:right;}
+ 		</style>
+	</head>
+<body>
+<script type="text/javascript">
+	function convertToB10(base, inVal) {
+		var result =0;
+		for (var i=0; i < inVal.length; i++)
+			result = base*result+parseInt(inVal.substr(i,1));
+		return result;
+	}
+    
+	function convertFromB10(base, inVal) {
+		var remaining=inVal, remainder, result='';
+		while (remaining != 0) {
+			remainder = remaining%base;
+			remaining = (remaining-remainder)/base;
+			result = remainder+result;
+		}
+		return result;
+	}
+	
+    
+	function Calculate_Button() {
+		var input1_BU = document.getElementById("input1").value,
+		 opSel = document.getElementById("operation"),
+		 operation = opSel.options[opSel.selectedIndex].value;
+		 input2_BU = document.getElementById("input2").value;
+		 base = document.getElementById("inputb").value;
+		var result = Calculate(input1_BU, operation, input2_BU, base);
+		document.getElementById("result").innerHTML = "Answer: "+input1_BU+operation+input2_BU+'='+result;
+	}
+	
+	function Check_Button() {
+		var input1_BU = document.getElementById("input1").value,
+		 opSel = document.getElementById("operation"),
+		 operation = opSel.options[opSel.selectedIndex].value,
+		 input2_BU = document.getElementById("input2").value,
+		 base = document.getElementById("inputb").value,
+		 suggested_BU = document.getElementById("suggested").value;
+		var result = Calculate(input1_BU, operation, input2_BU, base);
+		if (suggested_BU.toUpperCase()===result)
+			result = "Good job! "+suggested_BU+" is correct.";
+		else if (suggested_BU.length > result.length)
+			result = "Oops.  Your answer has too many digits.";
+		else if (suggested_BU.length < result.length)
+			result = "Oops.  Your answer has too few digits.";
+		else {
+			var r_index, kept = '', sug_len = suggested_BU.length;
+			for (var i = 0 ; i < sug_len ; i++) {
+				r_index = sug_len-1-i;
+				if (suggested_BU.substr(r_index,1).toUpperCase() === result.substr(r_index,1))
+					kept = suggested_BU.substr(r_index,1)+kept;
+				else
+					kept = "<span class='r'>"+suggested_BU.substr(r_index,1)+"</span>"+kept;
+			}
+			result = "<span>Oops. "+kept+" isn't right. All wrong digits are in <span class='r'>red</span></span>";
+		}		
+		document.getElementById("result").innerHTML = result;
+	}
+	
+	function Calculate(input1_BU, operation, input2_BU, base) {
+		 var whole_part, remainder, 
+		 input1_B10 = convertToB10(base, input1_BU),
+		 input2_B10 = convertToB10(base, input2_BU);
+		 
+		 switch(operation) {
+			case '+':
+				result = input1_B10+input2_B10;
+				break;
+			case '-':
+				result = input1_B10-input2_B10;
+				break;
+			case 'x':
+				result = input1_B10*input2_B10;
+				break;
+			case '/':
+				result = input1_B10/input2_B10;
+				var whole_part = Math.floor(result);
+				if (whole_part !== result)
+					remainder = input1_B10-whole_part*input2_B10;
+				break;
+		}
+		if (remainder)
+			result = convertFromB10(base, whole_part) + 'R' + convertFromB10(base, remainder);
+		else
+			result = convertFromB10(base, result)+'';
+		return result;
+    }
+	
+</script>
+	<a href="main.html">
+		<img class="buttons" src="Arrowback.png">
+	</a>
+	<h1>Base Calculator</h1>
+<p>
+	Choose base:
+	<select id="inputb" class="fontsize">
+		<option value="2">2</option>	
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+</p>
+<p>Enter the problem:</p>
+<p><input id="input1" class="inputnum" size="6" type="text">
+<select id="operation" class="fontsize">
+<option selected="selected" value="+">+</option>
+<option value="-">-</option>
+<option value="x">x</option>
+<option value="/">/</option>
+</select>
+<input id="input2" class="inputnum" size="6" type="text"></p>
+
+<input value="Show Answer" id="Calculate" onclick="Calculate_Button()" type="button">
+OR 
+Guess:
+<input id="suggested" class="inputnum" size="12" type="text">
+and
+<input value="Check" id="Check" onclick="Check_Button()" type="button">
+
+<p id="result"></p>
+
+
+</body></html>

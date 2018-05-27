@@ -1,0 +1,33 @@
+h1 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+	margin-top: 0px;
+}
+
+.buttons {
+	width: 20px;
+	display: inine;
+}
+
+.imgtool {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 256px;
+}
+
+.tool {
+	float: left;
+	width: 41.5%;
+	padding: 2%;
+	margin: 2%;
+	border: 1px solid black;
+	border-radius: 21px;
+}
+
+.clearfloat {
+	clear: both;
+}

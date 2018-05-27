@@ -1,0 +1,44 @@
+table, th, td {
+	border: 1px solid black;
+	margin: 10px;
+}
+th, td {
+	padding: 15px;
+	font-size: 21px;
+}
+
+td {
+	text-align: right;
+}
+
+tr:nth-child(even), th:nth-child(even), td:nth-child(even) {
+	background-color: #eeeeee;
+}
+
+.floattable {
+	float: left;
+}
+
+.clearfloat {
+	clear: both;
+}
+#addbutton {
+	margin: 10px;
+	margin-left: 0px;
+}
+
+input.fromtable {
+	font-size: 19px;
+	maxlength: 4;
+	width: 23px;
+}
+
+h1 {
+	margin: 10px;
+}
+
+h2 {
+	background-color: #cccccc;
+	padding-left: 5px;
+	margin-bottom: 5px;
+}
